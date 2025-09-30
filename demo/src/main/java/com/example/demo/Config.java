@@ -16,7 +16,7 @@ public class Config {
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {
         var user1 = User.withUsername("admin")
-                .password(encoder.encode("password"))
+                .password(encoder.encode("admin@123"))
                 .roles("USER")
                 .build();
 
