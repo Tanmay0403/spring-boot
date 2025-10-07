@@ -28,21 +28,7 @@ public class EmployeeController {
         return repo.findAllEmployees(); // Uses JPQL
     }
 
-    // @GetMapping("/nativelist")
-    // public List<java.util.Map<String, Object>> getEmployeesNative() {
-    //     List<Object[]> rows = repo.findAllEmployeesByNativeSql();
-    //     List<java.util.Map<String, Object>> result = new java.util.ArrayList<>();
-    //     for (Object[] row : rows) {
-    //         java.util.Map<String, Object> map = new java.util.HashMap<>();
-    //         map.put("id", row[0]);
-    //         map.put("name", row[1]);
-    //         map.put("managerName", row[2]);
-    //         map.put("salary", row[3]);
-    //         map.put("dept", row[4]);
-    //         result.add(map);
-    //     }
-    //     return result;
-    // }
+ 
     @GetMapping("/nativelist")
     public List<EmployeeDTO> getEmployeesNative() {
         return repo.findAllEmployeesWithManager(); // Uses JPQL

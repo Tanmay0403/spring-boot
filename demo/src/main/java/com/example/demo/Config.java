@@ -16,7 +16,7 @@ public class Config {
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {
         var user1 = User.withUsername("admin")
-                .password(encoder.encode("admin@123"))
+                .password(encoder.encode("admin"))
                 .roles("USER")
                 .build();
 
@@ -34,7 +34,8 @@ public class Config {
         http
             .csrf(csrf -> csrf.disable()) // disable CSRF for testing (don’t do this in production)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/employee/**").authenticated() // secure your employee API
+                .requestMatchers("/employee/").permitAll() // secure your employee API
+                .requestMatchers("/employee/listing").authenticated() // secure your employee API
                 .anyRequest().permitAll()
             )
             .httpBasic();
