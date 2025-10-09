@@ -34,8 +34,8 @@ public class Config {
         http
             .csrf(csrf -> csrf.disable()) // disable CSRF for testing (don’t do this in production)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/employee/").permitAll() // secure your employee API
-                .requestMatchers("/employee/listing").authenticated() // secure your employee API
+                .requestMatchers("/employee/listing").permitAll() // secure your employee API
+                .requestMatchers("/employee/add").authenticated() // secure your employee API
                 .anyRequest().permitAll()
             )
             .httpBasic();
